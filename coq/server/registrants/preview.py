@@ -316,7 +316,7 @@ async def _cmp_changed(stack: Stack, event: Mapping[str, Any] = {}) -> None:
             if metric := stack.metrics.get(uid):
                 await _virt_text(
                     ghost=stack.settings.display.ghost_text,
-                    text=metric.comp.primary_edit.new_text,
+                    text=metric.comp.primary_edit.new_text[metric.weight.prefix_matches:],
                 )
                 s = state(preview_id=uid)
                 if metric.comp.extern:
